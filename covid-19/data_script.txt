@@ -1,0 +1,319 @@
+
+drop table Quarantine_center cascade constraints; 
+drop table Staff cascade constraints; 
+drop table Customer cascade constraints; 
+drop table Booking cascade constraints; 
+drop table Billing cascade constraints;
+
+
+--Create Table Quarantine_Center
+
+Create table Quarantine_center (
+Q_id NUMBER(4) not null,
+Q_name VARCHAR2 (25) not null,
+Q_location VARCHAR2 (20) not null,
+Q_phone NUMBER(12) not null,
+Q_email VARCHAR2 (50),
+primary key(Q_id));
+
+--Create Table Staff
+
+Create table Staff (
+S_id NUMBER(4) not null,
+S_name VARCHAR2 (15) not null,
+S_phone NUMBER(12) not null,
+S_charge NUMBER(10) not null,
+primary key(S_id));
+
+
+
+Create table Customer (
+C_id NUMBER(4) not null,
+C_name VARCHAR2 (20) not null,
+C_address VARCHAR2 (20) not null,
+C_phone NUMBER(12) not null,
+C_email VARCHAR2 (15),
+primary key(C_id));
+
+
+
+Create table Booking (
+B_id NUMBER(4) not null,
+C_id NUMBER(4) not null,
+S_id NUMBER(4) not null,
+Q_id NUMBER(4) not null,
+Day_no NUMBER(10) not null,
+primary key(B_id),
+foreign key(S_id) references  Staff (S_id),
+foreign key(Q_id) references  Quarantine_center (Q_id));
+
+
+
+Create table Billing (
+Bill_id NUMBER(4) not null,
+B_id NUMBER(4) not null,
+Total_bill NUMBER(10) not null,
+primary key(Bill_id),
+foreign key(B_id) references Booking (B_id));
+
+
+
+-- Quarantine_center Table
+
+insert into Quarantine_center
+values(2991,'Stay 247', 'Melacca', '01131226143', 'stay247@gmail.com');
+
+insert into Quarantine_center
+values(2992,'Best Stay', 'Gombak', '01121225143', 'beststay@gmail.com');
+
+insert into Quarantine_center
+values(2993,'Healthy Stay', 'Puchong', '01031226143', 'healthstay@gmail.com');
+
+insert into Quarantine_center
+values(2994,'The Observer ', 'Johor Baru', '01161246143', 'observer@gmail.com');
+
+insert into Quarantine_center
+values(2995,'Moon Model', 'Kuching', '01131116143', 'moonmodel@gmail.com');
+
+insert into Quarantine_center
+values(2996,'Model Town', 'Kota Bahru', '0113127634', 'modeltown@gmail.com');
+
+insert into Quarantine_center
+values(2997,'Klana Beach', 'Kelantan', '01131116135', 'klanabeach1@gmail.com');
+
+insert into Quarantine_center
+values(2998,'Selangor Clasic', 'Selangor', '01131346143', 'selangorl@gmail.com');
+
+
+insert into Quarantine_center
+values(2999,'Terengannu Klasik', 'Terengannu', '01131346193', 'terenganuclass@gmail.com');
+
+insert into Quarantine_center
+values(3000,'Airport Lounge', 'KLIA, Kuala Lumpur', '01931346193', 'airportklia@gmail.com');
+
+insert into Quarantine_center
+values(3001,'Pahang State center', 'Pahang', '01831346193', 'pahangcenter@gmail.com');
+
+
+insert into Quarantine_center
+values(3002,'Putrajaya Depo', 'Putrajaya', '01931546197', 'putramall@gmail.com');
+
+insert into Quarantine_center
+values(3003,'Ipoh Deck', 'Ipoh', '01531546197', 'ipohdeck@gmail.com');
+
+insert into Quarantine_center
+values(3004,'Kuantan Mall', 'Kuantan', '01331546198', 'mallkuantan@gmail.com');
+
+
+insert into Quarantine_center
+values(3040,'Plaza KLTS', 'Wp. Kuala Lumpur', '01531548100', 'plazaklts1@gmail.com');
+
+
+--staff  Table
+
+insert into staff 
+values (1001 , 'Shibbir', '0146916951', 90);
+
+insert into staff 
+values (1002 , 'Mamun', '0156916951', 80);
+
+insert into staff 
+values (1003 , 'Asif', '0166916951', 70);
+
+insert into staff 
+values (1004 , 'Turjoy', '0176916951', 50);
+
+insert into staff 
+values (1005 , 'Sazzad', '0186916951', 96);
+
+insert into staff 
+values (1006 , 'Ehsan', '0146912959', 110);
+
+insert into staff 
+values (1007, 'Saif', '0146912969', 110);
+
+insert into staff 
+values (1008, 'Rafa', '0146912979', 85);
+
+insert into staff 
+values (1009, 'Jimmin', '0148912979', 45);
+
+insert into staff 
+values (2009, 'Lee-Joon', '0148567979', 55);
+
+insert into staff 
+values (2010, 'Ji-Sung', '0148967979', 65);
+
+insert into staff 
+values (2011, 'J-Hope', '0148967980', 112);
+
+insert into staff 
+values (2012, 'Suga', '0148967981', 56);
+
+insert into staff 
+values (2013, 'Jungkook', '0148966661', 75);
+
+insert into staff 
+values (2014, 'Lisa', '0148966555', 75);
+
+
+--customer table
+
+insert into customer 
+values (0001 , 'Ridida' , 'Sirajgonj', '01732425211', 'ridi@gmail.com');
+
+insert into customer 
+values (0002 , 'Jennie' , 'S.Korea', '01832425222', 'jen@gmail.com');
+
+
+insert into customer 
+values (0003 , 'Jisoo' , 'N.Korea', '01832425121', 'jis@gmail.com');
+
+insert into customer 
+values (0004 , 'Rose' , 'Dhaka', '01235425121', 'ros@gmail.com');
+
+insert into customer 
+values (0005 , 'Tylor Swift' , 'California', '01235421231', 'tsw@gmail.com');
+
+insert into customer 
+values (0006 , 'Selena Gomej' , 'Newyork', '01235421242', 'gom@gmail.com');
+
+insert into customer 
+values (0007 , 'Peter Perker' , 'Las Vegas', '01235421232', 'pet@gmail.com');
+
+insert into customer 
+values (0008 , 'Danial Redcliff' , 'Chicago', '01235421342', 'dan@gmail.com');
+
+insert into customer 
+values (0009 , 'Emma Watson' , 'NewYork', '01235421564', 'ema@gmail.com');
+
+insert into customer 
+values (0010 , 'Shabnur' , 'Dhaka', '01235421455', 'sha@gmail.com');
+
+insert into customer 
+values (0011 , 'Purnima' , 'Feni', '01235429999', 'pur@gmail.com');
+
+insert into customer 
+values (0012 , 'Riaz' , 'Chittagong', '01235429996', 'riar@gmail.com');
+
+insert into customer 
+values (0013 , 'Humayun Ahmed' , 'Bogra', '01235429989', 'hum@gmail.com');
+
+insert into customer 
+values (0014 , 'Dan Brown' , 'London', '01235429987', 'bro@gmail.com');
+
+insert into customer 
+values (0015 , 'Messi' , 'Argentina', '01235429121', 'mes@gmail.com');
+
+
+
+
+--Booking Table
+
+
+insert into Booking
+values( 101, '0001',  '1001', '2991', '5' );
+
+insert into Booking
+values( 102, '0002',  '1001', '2991', '10' );
+
+insert into Booking
+values( 103, '0003',  '1002', '2992', '15' );
+
+insert into Booking
+values( 104, '0004',  '1002', '2992', '17' );
+
+insert into Booking
+values( 105, '0005',  '1003', '2993', '19' );
+
+insert into Booking
+values( 106, '0006',  '1003', '2993', '11' );
+
+insert into Booking
+values( 107, '0007',  '1004', '2994', '10');
+
+insert into Booking
+values( 108, '0008',  '1004', '2999', '7');
+
+insert into Booking
+values( 113, '0009',  '1004', '2994', '7');
+
+insert into Booking
+values( 109, '0010',  '1005', '2995', '15');
+
+insert into Booking
+values( 110, '0011',  '1005', '2995', '20');
+
+insert into Booking
+values( 111, '0012',  '1005', '2996', '25');
+
+insert into Booking
+values( 112, '0013',  '1005', '2996', '17');
+
+insert into Booking
+values( 114, '0014',  '1006', '2997', '5');
+
+insert into Booking
+values( 115, '0015',  '1007', '2998', '7');
+
+
+
+
+--Billing Table
+
+
+insert into Billing
+values(501,'101','500');
+
+insert into Billing
+values(502,'102','1000');
+
+insert into Billing
+values(503,'103','1700');
+
+insert into Billing
+values(504,'104','1900');
+
+insert into Billing
+values(505,'105','1100');
+
+insert into Billing
+values(506,'106','1000');
+
+insert into Billing
+values(507,'107','500');
+
+insert into Billing
+values(508,'108','1300');
+
+insert into Billing
+values(509,'109','547');
+
+insert into Billing
+values(510,'110','899');
+
+insert into Billing
+values(511,'111','458');
+
+insert into Billing
+values(512,'112','900');
+
+insert into Billing
+values(513,'113','490');
+
+insert into Billing
+values(514,'114','600');
+
+insert into Billing
+values(515,'115','600');
+
+
+
+
+
+
+
+
+
+
+
